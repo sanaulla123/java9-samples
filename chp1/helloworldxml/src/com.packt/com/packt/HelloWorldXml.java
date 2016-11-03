@@ -11,7 +11,7 @@ import javax.xml.bind.Marshaller;
 
 public class HelloWorldXml{
   public static void main(String[] args) throws JAXBException{
-  	//create instance of JAXBContext with the class we want to serialize into XML
+    //create instance of JAXBContext with the class we want to serialize into XML
     JAXBContext jaxb = JAXBContext.newInstance(Messages.class);
 
     //create a marshaller which will do the task of generating xml
