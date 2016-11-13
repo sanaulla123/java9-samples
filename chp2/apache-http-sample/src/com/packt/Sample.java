@@ -14,23 +14,13 @@ import com.fasterxml.jackson.core.type.TypeReference;
 
 public class Sample{
 	public static void main (String [] args){
-		try(CloseableHttpClient client = HttpClients.createDefault()){
-			HttpGet httpGet = new HttpGet("http://jsonplaceholder.typicode.com/users");
-			try(CloseableHttpResponse response = client.execute(httpGet)){
-				System.out.println(response.getStatusLine());
-				HttpEntity entity = response.getEntity();
-				System.out.println(EntityUtils.toString(entity));
+		try{
+			ObjectMapper mapper = new ObjectMapper();
+			List<User> users = mapper.readValue(new URL("http://jsonplaceholder.typicode.com/users"), 
+				new TypeReference<List<User>>(){});
 
-				ObjectMapper mapper = new ObjectMapper();
-				List<User> users = mapper.readValue(new URL("http://jsonplaceholder.typicode.com/users"), 
-					new TypeReference<List<User>>(){});
-
-				for ( User user: users){
-					System.out.println("Name: " + user.name);
-				}
-
-			}catch(Exception ex){
-				ex.printStackTrace();
+			for ( User user: users){
+				System.out.println("Name: " + user.name);
 			}
 		}catch(Exception ex){
 			ex.printStackTrace();
