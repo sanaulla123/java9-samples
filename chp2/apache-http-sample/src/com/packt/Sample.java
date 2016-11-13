@@ -10,6 +10,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.List;
 import com.packt.model.User;
 import java.net.URL;
+import com.fasterxml.jackson.core.type.TypeReference;
 
 public class Sample{
 	public static void main (String [] args){
