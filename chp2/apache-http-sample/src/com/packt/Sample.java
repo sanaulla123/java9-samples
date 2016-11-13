@@ -10,7 +10,7 @@ public class Sample{
 	public static void main (String [] args){
 		try(CloseableHttpClient client = HttpClients.createDefault()){
 			HttpGet httpGet = new HttpGet("http://jsonplaceholder.typicode.com/users");
-			try(CloseableHttpResponse response = client.execute()){
+			try(CloseableHttpResponse response = client.execute(httpGet)){
 				System.out.println(response.getStatusLine());
 				HttpEntity entity = response.getEntity();
 				System.out.println(EntityUtils.toString(entity));
