@@ -20,7 +20,7 @@ public class Sample{
 				new TypeReference<List<User>>(){});
 
 			for ( User user: users){
-				System.out.println("Name: " + user.name);
+				System.out.println("Name: " + user.name + ", Company: " + user.company.name);
 			}
 		}catch(Exception ex){
 			ex.printStackTrace();
