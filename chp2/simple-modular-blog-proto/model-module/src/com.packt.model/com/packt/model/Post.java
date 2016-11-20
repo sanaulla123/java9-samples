@@ -6,6 +6,7 @@ import java.util.Set;
 import java.util.HashSet;
 import java.util.Date;
 import java.util.UUID;
+import java.util.Collections;
 
 public class Post{
 	private UUID postId = UUID.randomUUID();
