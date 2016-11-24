@@ -1,9 +1,10 @@
-package com.packt.math.util;
+package com.packt.math;
 
 public class MathUtil{
 
 	public Boolean isPrime(Integer number){
-		System.out.println("Finding is prime: " + number);
+		return IntStream.range(2,num)
+						.noneMatch(i -> num % i == 0 );
 	}
 
 	/** find sum of prime number <= limit */

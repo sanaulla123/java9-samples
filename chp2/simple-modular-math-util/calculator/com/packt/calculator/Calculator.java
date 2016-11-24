@@ -1,4 +1,4 @@
-import com.packt.math.util.MathUtil;
+import com.packt.math.MathUtil;
 
 public class Calculator{
 
