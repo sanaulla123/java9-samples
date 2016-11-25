@@ -35,7 +35,7 @@ public class Calculator{
 				break;
 				case 2:
 					System.out.println("Enter the number");
-					Integer number = reader.nextInt();
+					number = reader.nextInt();
 					if (MathUtil.isEven(number)){
 						System.out.println("The number " + number +" is even");
 					}
@@ -48,13 +48,13 @@ public class Calculator{
 				break;
 				case 4:
 					System.out.println("How many evens?");
-					Integer count = reader.nextInt();
+					count = reader.nextInt();
 					System.out.println(String.format("Sum of %d evens is %d", 
 						count, MathUtil.sumOfFirstNEvens(count)));
 				break;
 				case 5: 
 					System.out.println("How many odds?");
-					Integer count = reader.nextInt();
+					count = reader.nextInt();
 					System.out.println(String.format("Sum of %d odds is %d", 
 						count, MathUtil.sumOfFirstNOdds(count)));
 				break;
