@@ -1,3 +1,5 @@
+package com.packt.calculator;
+
 import com.packt.math.MathUtil;
 import java.util.Scanner;
 import java.util.function.Supplier;
@@ -15,7 +17,7 @@ public class Calculator{
 		System.out.println("Enter the number to choose operation");
 		return reader.nextInt();
 	}
-	
+
 	public static void main(String[] args){
 		Scanner reader = new Scanner(System.in);
 		do{
