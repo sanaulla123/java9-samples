@@ -20,9 +20,9 @@ public class Calculator{
 
 	public static void main(String[] args){
 		Scanner reader = new Scanner(System.in);
-		
+		Integer choice = 0 ;
 		do{
-			Integer choice = acceptChoice(reader);
+			choice = acceptChoice(reader);
 			switch(choice){
 				case 1:
 					System.out.println("Enter the number");
@@ -59,6 +59,6 @@ public class Calculator{
 						count, MathUtil.sumOfFirstNOdds(count)));
 				break;
 			}
-		}while(choice != 6);
+		}while(choice < 6 && choice > 0);
 	}
 }
