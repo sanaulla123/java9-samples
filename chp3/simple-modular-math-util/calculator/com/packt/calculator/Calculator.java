@@ -20,6 +20,7 @@ public class Calculator{
 
 	public static void main(String[] args){
 		Scanner reader = new Scanner(System.in);
+		
 		do{
 			Integer choice = acceptChoice(reader);
 			switch(choice){
