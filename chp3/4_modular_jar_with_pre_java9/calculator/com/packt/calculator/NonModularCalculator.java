@@ -5,7 +5,7 @@ import java.util.Scanner;
 import java.util.function.Supplier;
 import java.util.function.Function;
 
-public class Calculator{
+public class NonModularCalculator{
 	private static Integer acceptChoice(Scanner reader){
 		System.out.println("************Advanced Calculator************");
 		System.out.println("1. Prime Number check");
