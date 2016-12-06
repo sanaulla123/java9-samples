@@ -7,7 +7,7 @@ public class SimpleInterestCommand implements Command{
 	public final Integer rate; 
 	public final Integer duration;
 
-	public SimpleInterestCommand(Integer principal, Integer rate, Integer duration){
+	public SimpleInterestCommand(Double principal, Integer rate, Integer duration){
 		this.principal = principal;
 		this.rate = rate;
 		this.duration = duration;
