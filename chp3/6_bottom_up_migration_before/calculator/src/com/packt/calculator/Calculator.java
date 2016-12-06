@@ -47,6 +47,17 @@ public class Calculator{
 					System.out.println("How many odds?");
 					command = new SumOddsCommand(reader.nextInt());
 				break;
+				case 6:
+					System.out.println("Enter principal, rate and number of years");
+					command = new SimpleInterestCommand(reader.nextDouble(), 
+						reader.nextInt(), reader.nextInt());
+				break;
+				case 7:
+					System.out.println("Enter principal, rate, number of compunds per year " + 
+						"and number of years");
+					command = new CompoundInterestCommand(reader.nextDouble(), 
+						reader.nextInt(), reader.nextInt(), reader.nextInt());
+				break;
 			}
 			if ( command != null ){
 				command.execute();
