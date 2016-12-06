@@ -1,7 +1,7 @@
 package com.packt.calculator.commands;
 
 import com.packt.banking.BankUtil;
-
+import java.util.Map;
 public class CompoundInterestCommand implements Command{
 	public final Double principal;
 	public final Integer rateInPercent;
@@ -20,7 +20,7 @@ public class CompoundInterestCommand implements Command{
 	public void execute(){
 		Double interest = BankUtil.computeCompoundInterest(principal, rateInPercent, 
 			noOfCompoundsPerYear, duration);
-
-		System.out.println(String.format("Compound Interest is %f", interest));
+		printInJson(Map.of("compound interest", interest));
+		//System.out.println(String.format("Compound Interest is %f", interest));
 	}
 }

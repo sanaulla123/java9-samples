@@ -1,6 +1,7 @@
 package com.packt.calculator.commands;
 
 import com.packt.math.MathUtil;
+import java.util.Map;
 
 public class PrimeCheckCommand implements Command{
 	public final Integer number;
@@ -11,9 +12,11 @@ public class PrimeCheckCommand implements Command{
 	@Override
 	public void execute(){
 		if (MathUtil.isPrime(number)){
-			System.out.println("The number " + number +" is prime");
+			printInJson(Map.of(number.toString(), "prime"));
+			//System.out.println("The number " + number +" is prime");
 		}else{
-			System.out.println("The number " + number +" is not prime");
+			printInJson(Map.of(number.toString(), "not prime"));
+			//System.out.println("The number " + number +" is not prime");
 		}
 	}
 }

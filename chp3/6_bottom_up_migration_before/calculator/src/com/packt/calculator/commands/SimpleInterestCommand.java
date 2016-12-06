@@ -1,6 +1,7 @@
 package com.packt.calculator.commands;
 
 import com.packt.banking.BankUtil;
+import java.util.Map;
 
 public class SimpleInterestCommand implements Command{
 	public final Double principal; 
@@ -16,6 +17,7 @@ public class SimpleInterestCommand implements Command{
 	@Override
 	public void execute(){
 		Double interest = BankUtil.computeSimpleInterest(principal, rate, duration);
-		System.out.println(String.format("Simple Interest is %f", interest));
+		printInJson(Map.of("simple interest",interest));
+		//System.out.println(String.format("Simple Interest is %f", interest));
 	}
 }

@@ -1,6 +1,7 @@
 package com.packt.calculator.commands;
 
 import com.packt.math.MathUtil;
+import java.util.Map;
 
 public class SumOddsCommand implements Command{
 	public final Integer count;
@@ -10,7 +11,9 @@ public class SumOddsCommand implements Command{
 
 	@Override
 	public void execute(){
-		System.out.println(String.format("Sum of %d odds is %d", 
-			count, MathUtil.sumOfFirstNOdds(count)));
+		printInJson(Map.of(String.format("Sum of %d odds", count) , 
+			MathUtil.sumOfFirstNOdds(count)));
+		// System.out.println(String.format("Sum of %d odds is %d", 
+		// 	count, MathUtil.sumOfFirstNOdds(count)));
 	}
 }

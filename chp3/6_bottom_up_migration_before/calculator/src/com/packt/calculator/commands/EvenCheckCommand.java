@@ -1,6 +1,7 @@
 package com.packt.calculator.commands;
 
 import com.packt.math.MathUtil;
+import java.util.Map;
 
 public class EvenCheckCommand implements Command{
 	public final Integer number;
@@ -11,9 +12,11 @@ public class EvenCheckCommand implements Command{
 	@Override
 	public void execute(){
 		if (MathUtil.isEven(number)){
-			System.out.println("The number " + number +" is even");
+			printInJson(Map.of(number.toString(), "even"));
+			//System.out.println("The number " + number +" is even");
 		}else{
-			System.out.println("The number " + number +" is odd");
+			printInJson(Map.of(number.toString(), "odd"));
+			//System.out.println("The number " + number +" is odd");
 		}
 	}
 }
