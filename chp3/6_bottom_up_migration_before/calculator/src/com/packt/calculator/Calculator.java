@@ -48,7 +48,7 @@ public class Calculator{
 					command = new SumOddsCommand(reader.nextInt());
 				break;
 			}
-			if ( command ! = null ){
+			if ( command != null ){
 				command.execute();
 			}
 		}while(choice < 8 && choice > 0);

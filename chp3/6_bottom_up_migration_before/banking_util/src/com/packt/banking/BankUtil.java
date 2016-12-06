@@ -14,7 +14,7 @@ public class BankUtil{
 
 		Double intermediate = 1 + (rate/noOfCompoundsPerYear);
 		Double amount = principal * Math.pow(intermediate, (duration * noOfCompoundsPerYear));
-		return (amount - principal)
+		return (amount - principal);
 	}
 
 }
