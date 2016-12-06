@@ -7,7 +7,7 @@ public interface Command{
 	private final ObjectMapper objectMapper = new ObjectMapper();
 	public void execute();
 
-	protected void printInJson(Map<String, Object> data){
+	default void printInJson(Map<String, Object> data){
 		System.out.println(objectMapper.writeValueAsString(data));
 	}
 
