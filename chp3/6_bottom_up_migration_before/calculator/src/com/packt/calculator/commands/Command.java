@@ -5,9 +5,9 @@ import java.util.Map;
 
 public interface Command{
 	ObjectMapper objectMapper = new ObjectMapper();
-	public void execute();
+	public void execute() throws Exception;
 
-	default void printInJson(Map<String, Object> data){
+	default void printInJson(Map<String, Object> data) throws Exception{
 		System.out.println(objectMapper.writeValueAsString(data));
 	}
 
