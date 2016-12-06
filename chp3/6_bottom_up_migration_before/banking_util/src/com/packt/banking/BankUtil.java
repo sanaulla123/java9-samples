@@ -1,4 +1,4 @@
-package com.packt.math;
+package com.packt.banking;
 import java.util.stream.IntStream;
 import java.util.function.IntPredicate;
 
