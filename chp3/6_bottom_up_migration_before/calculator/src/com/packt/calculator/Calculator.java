@@ -20,7 +20,7 @@ public class Calculator{
 		return reader.nextInt();
 	}
 
-	public static void main(String[] args){
+	public static void main(String[] args) throws Exception{
 		Scanner reader = new Scanner(System.in);
 		Integer choice = 0 ;
 		do{
