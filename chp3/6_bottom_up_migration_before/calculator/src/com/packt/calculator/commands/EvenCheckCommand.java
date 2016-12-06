@@ -10,7 +10,7 @@ public class EvenCheckCommand implements Command{
 	}
 
 	@Override
-	public void execute(){
+	public void execute() throws Exception{
 		if (MathUtil.isEven(number)){
 			printInJson(Map.of(number.toString(), "even"));
 			//System.out.println("The number " + number +" is even");

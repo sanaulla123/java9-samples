@@ -17,7 +17,7 @@ public class CompoundInterestCommand implements Command{
 	}
 
 	@Override
-	public void execute(){
+	public void execute() throws Exception{
 		Double interest = BankUtil.computeCompoundInterest(principal, rateInPercent, 
 			noOfCompoundsPerYear, duration);
 		printInJson(Map.of("compound interest", interest));

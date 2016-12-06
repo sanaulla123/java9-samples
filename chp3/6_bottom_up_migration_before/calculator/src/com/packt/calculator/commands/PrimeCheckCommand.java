@@ -10,7 +10,7 @@ public class PrimeCheckCommand implements Command{
 	}
 
 	@Override
-	public void execute(){
+	public void execute() throws Exception{
 		if (MathUtil.isPrime(number)){
 			printInJson(Map.of(number.toString(), "prime"));
 			//System.out.println("The number " + number +" is prime");

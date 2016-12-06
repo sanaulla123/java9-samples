@@ -10,7 +10,7 @@ public class SumOddsCommand implements Command{
 	}
 
 	@Override
-	public void execute(){
+	public void execute() throws Exception{
 		printInJson(Map.of(String.format("Sum of %d odds", count) , 
 			MathUtil.sumOfFirstNOdds(count)));
 		// System.out.println(String.format("Sum of %d odds is %d", 

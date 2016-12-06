@@ -10,7 +10,7 @@ public class SumEvensCommand implements Command{
 	}
 
 	@Override
-	public void execute(){
+	public void execute() throws Exception{
 		printInJson(Map.of(String.format("Sum of %d evens", count) , 
 			MathUtil.sumOfFirstNEvens(count)));
 		//System.out.println(String.format("Sum of %d evens is %d", 

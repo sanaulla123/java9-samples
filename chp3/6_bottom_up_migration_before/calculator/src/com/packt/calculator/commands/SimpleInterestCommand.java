@@ -15,7 +15,7 @@ public class SimpleInterestCommand implements Command{
 	}
 
 	@Override
-	public void execute(){
+	public void execute() throws Exception{
 		Double interest = BankUtil.computeSimpleInterest(principal, rate, duration);
 		printInJson(Map.of("simple interest",interest));
 		//System.out.println(String.format("Simple Interest is %f", interest));

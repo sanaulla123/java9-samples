@@ -10,7 +10,7 @@ public class SumPrimesCommand implements Command{
 	}
 
 	@Override
-	public void execute(){
+	public void execute() throws Exception{
 		printInJson(Map.of(String.format("Sum of %d primes", count) , 
 			MathUtil.sumOfFirstNPrimes(count)));
 		/*System.out.println(String.format("Sum of %d primes is %d", 
