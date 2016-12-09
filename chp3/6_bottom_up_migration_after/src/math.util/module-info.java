@@ -1,1 +1,3 @@
-module-info
+module math.util{
+	exports com.packt.math;
+}
