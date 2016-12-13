@@ -7,10 +7,10 @@ import java.util.Iterator;
 import java.util.ServiceLoader;
 
 public abstract class BookService{
-	public void create(Book book);
-	public Book read(String id);
-	public void update(Book book);
-	public void delete(String id);
+	public abstract void create(Book book);
+	public abstract Book read(String id);
+	public abstract void update(Book book);
+	public abstract void delete(String id);
 
 	public static BookService getInstance(){
 		ServiceLoader<BookServiceProvider> sl
