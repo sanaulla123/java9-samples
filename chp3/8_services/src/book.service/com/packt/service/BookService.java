@@ -18,7 +18,7 @@ public abstract class BookService{
         Iterator<BookServiceProvider> iter = sl.iterator();
         if (!iter.hasNext())
             throw new RuntimeException("No service providers found!");
-        BookServiceProvider provider;
+        BookServiceProvider provider = null;
         while(iter.hasNext()){
         	provider = iter.next();
         	System.out.println(provider.getClass());
