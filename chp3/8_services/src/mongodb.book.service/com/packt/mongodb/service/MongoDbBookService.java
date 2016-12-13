@@ -3,7 +3,7 @@ package com.packt.mongodb.service;
 import com.packt.service.BookService;
 import com.packt.model.Book;
 
-public class MongoDbBookService implements BookService{
+public class MongoDbBookService extends BookService{
 	public void create(Book book){
 		System.out.println("Mongodb Create book ... " + book.title);
 	}
