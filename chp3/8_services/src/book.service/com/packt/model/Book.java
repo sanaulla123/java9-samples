@@ -1,3 +1,5 @@
+package com.packt.model;
+
 public class Book{
 	public Book(String id, String title, String author){
 		this.id = id;

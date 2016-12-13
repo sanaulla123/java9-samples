@@ -1,4 +1,4 @@
-package com.packt.mongodb;
+package com.packt.mongodb.service;
 
 import com.packt.service.BookService;
 import com.packt.model.Book;
