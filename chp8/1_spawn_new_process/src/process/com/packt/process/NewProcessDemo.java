@@ -1,9 +1,10 @@
 package com.packt.process;
 
 import java.util.concurrent.TimeUnit;
+import java.io.IOException;
 
 public class NewProcessDemo{
-	public static void main(String [] args){
+	public static void main(String [] args) throws IOException, InterruptedException{
 		ProcessBuilder pBuilder = new ProcessBuilder("top");
 		Process p = pBuilder.inheritIO().start();
 		if(p.waitFor(1, TimeUnit.SECONDS)){
