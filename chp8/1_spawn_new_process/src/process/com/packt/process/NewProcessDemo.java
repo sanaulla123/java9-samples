@@ -5,7 +5,7 @@ import java.io.IOException;
 
 public class NewProcessDemo{
 	public static void main(String [] args) throws IOException, InterruptedException{
-		ProcessBuilder pBuilder = new ProcessBuilder("top");
+		ProcessBuilder pBuilder = new ProcessBuilder("free", "-m");
 		Process p = pBuilder.inheritIO().start();
 		if(p.waitFor(1, TimeUnit.SECONDS)){
 			System.out.println("process completed successfully");
