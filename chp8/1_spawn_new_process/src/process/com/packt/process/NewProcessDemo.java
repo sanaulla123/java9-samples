@@ -2,7 +2,7 @@ package com.packt.process;
 
 
 public class NewProcessDemo{
-	public static main void(String [] args){
+	public static void main(String [] args){
 		ProcessBuilder pBuilder = new ProcessBuilder("top");
 		Process p = pBuilder.inheritIO().start();
 		if(p.waitFor(1, TimeUnit.SECONDS)){
