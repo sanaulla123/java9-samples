@@ -11,6 +11,8 @@ public class NewProcessDemo{
 			System.out.println("process completed successfully");
 		}else{
 			System.out.println("waiting time elapsed, process did not complete");
+			System.out.println("destroying process forcibly");
+			p.destroyForcibly();
 		}
 	}
 }
