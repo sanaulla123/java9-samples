@@ -14,9 +14,9 @@ public class RedirectFileDemo{
 		int exitValue = p.waitFor();
 
 		System.out.println("Error");
-		Files.lines(Paths.get("error")).forEach(l -> System.out.println(l))
+		Files.lines(Paths.get("error")).forEach(l -> System.out.println(l));
 
 		System.out.println("Output");
-		Files.lines(Paths.get("output")).forEach(l -> System.out.println(l))
+		Files.lines(Paths.get("output")).forEach(l -> System.out.println(l));
 	}
 }
