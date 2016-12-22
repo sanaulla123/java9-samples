@@ -14,12 +14,12 @@ public class RedirectFileDemo{
 		int exitValue = p.waitFor();
 
 		System.out.println("Error");
-		for(String line : Files.lines(Paths.get("error")){
+		for(String line : Files.lines(Paths.get("error"))){
 			System.out.println(line);
 		}
 
 		System.out.println("Output");
-		for(String line : Files.lines(Paths.get("output")){
+		for(String line : Files.lines(Paths.get("output"))){
 			System.out.println(line);
 		}
 	}
