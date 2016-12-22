@@ -2,7 +2,7 @@ package com.packt.process;
 
 import java.io.IOException;
 import java.io.File;
-import java.nio.Files;
+import java.nio.file.Files;
 
 public class RedirectFileDemo{
 	public static void main(String[] args) throws IOException{
