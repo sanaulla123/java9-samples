@@ -14,10 +14,10 @@ public class RedirectFileDemo{
 		Process p = pb.start();
 		int exitValue = p.waitFor();
 
-		System.out.println("Error");
-		Files.lines(Paths.get("error")).forEach(l -> System.out.println(l));
-
 		System.out.println("Output");
 		Files.lines(Paths.get("output")).forEach(l -> System.out.println(l));
+		
+		System.out.println("Error");
+		Files.lines(Paths.get("error")).forEach(l -> System.out.println(l));
 	}
 }
