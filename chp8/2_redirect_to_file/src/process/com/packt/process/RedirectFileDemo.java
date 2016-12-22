@@ -9,9 +9,9 @@ public class RedirectFileDemo{
 	public static void main(String[] args) 
 		throws IOException, InterruptedException{
 		ProcessBuilder pb = new ProcessBuilder("iostat");
-		Process p = pb.redirectError(new File("error"))
-					  .redirectOutput(new File("output"))
-					  .start();
+		pb.redirectError(new File("error"))
+			.redirectOutput(new File("output"));
+		Process p = pb.start();
 		int exitValue = p.waitFor();
 
 		System.out.println("Error");
