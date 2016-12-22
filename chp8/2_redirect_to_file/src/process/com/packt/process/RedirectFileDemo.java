@@ -6,7 +6,8 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 public class RedirectFileDemo{
-	public static void main(String[] args) throws IOException{
+	public static void main(String[] args) 
+		throws IOException, InterruptedException{
 		ProcessBuilder pb = new ProcessBuilder("iostat");
 		Process p = pb.redirectError(new File("error"))
 					  .redirectOutput(new File("output"))
