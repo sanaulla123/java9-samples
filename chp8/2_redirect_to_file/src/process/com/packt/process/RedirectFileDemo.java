@@ -8,7 +8,7 @@ import java.nio.file.Paths;
 public class RedirectFileDemo{
 	public static void main(String[] args) 
 		throws IOException, InterruptedException{
-		ProcessBuilder pb = new ProcessBuilder("iostat");
+		ProcessBuilder pb = new ProcessBuilder("iostat", "-Z");
 		Process p = pb.redirectError(new File("error"))
 					  .redirectOutput(new File("output"))
 					  .start();
