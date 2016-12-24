@@ -1,3 +1,5 @@
 echo $MY_VARIABLE;
+echo "Running tree command";
 tree;
-ls -ltr;
+echo "Running iostat command"
+iostat;
