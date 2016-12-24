@@ -2,6 +2,7 @@ package com.packt.process;
 
 import java.io.IOException;
 import java.io.File;
+import java.util.Map;
 
 public class RunningShellScriptDemo{
 	public static void main(String[] args)
@@ -11,7 +12,8 @@ public class RunningShellScriptDemo{
 		
 		pb.directory(new File("/root/java9-samples/chp8/5_running_shell_script"));
 
-		System.out.println(pb.directory());
+		Map<String, String> environment = pb.environment();
+		environment.put("MY_VARIABLE", "From your parent Java process");
 
 		pb.command("/bin/bash", "script.sh").inheritIO();
 
