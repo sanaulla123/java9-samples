@@ -9,6 +9,8 @@ public class RunningShellScriptDemo{
 
 		ProcessBuilder pb = new ProcessBuilder();
 
+		System.out.println(pb.directory());
+		
 		pb.command("script.sh").inheritIO();
 
 		Process p = pb.start();
