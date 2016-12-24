@@ -13,7 +13,7 @@ public class RunningShellScriptDemo{
 
 		System.out.println(pb.directory());
 
-		pb.command("script.sh").inheritIO();
+		pb.command("/bin/bash", "script.sh").inheritIO();
 
 		Process p = pb.start();
 
