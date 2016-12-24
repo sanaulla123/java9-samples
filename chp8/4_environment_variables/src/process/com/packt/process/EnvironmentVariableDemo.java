@@ -19,7 +19,7 @@ public class EnvironmentVariableDemo{
 
 		Process p = pb.start();
 
-		int exitValue = p.waitFor()
+		int exitValue = p.waitFor();
 		
 	}
 }
