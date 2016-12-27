@@ -16,8 +16,8 @@ public class CurrentProcessInfoDemo{
 		System.out.println("Command: " + info.command());
 		System.out.println("Arguments: " + info.arguments());
 		System.out.println("User: " + info.user());
-		System.out.println("Start: " + info.startInstance());
-		System.out.println("Total Duration: " + info.totalCpuDuration().toSeconds());
+		System.out.println("Start: " + info.startInstant());
+		System.out.println("Total Duration: " + info.totalCpuDuration().get().toSeconds());
 		System.out.println("PID: " + handle.getPid());
 	}
 }
