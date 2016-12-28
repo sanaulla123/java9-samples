@@ -11,9 +11,9 @@ public class SpawnedProcessInfoDemo{
 
 		ProcessHandle handle = p.toHandle();
 
-		ProcessHandle.Info info = handle.info();
-
 		int exitValue = p.waitFor();
+
+		ProcessHandle.Info info = handle.info();
 
 		System.out.println("Command line: " + info.commandLine().get());
 		System.out.println("Command: " + info.command().get());
