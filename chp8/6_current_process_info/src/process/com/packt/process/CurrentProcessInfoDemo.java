@@ -9,7 +9,7 @@ public class CurrentProcessInfoDemo{
 		ProcessHandle handle = ProcessHandle.current();
 		
 		for ( int i = 0 ; i < 1000000; i++){
-			Thread.sleep(10000);
+			Thread.sleep(1000);
 		}
 		
 		ProcessHandle.Info info = handle.info();
