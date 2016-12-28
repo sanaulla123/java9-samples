@@ -5,6 +5,7 @@ import java.io.IOException;
 
 public class SpawnedProcessInfoDemo{
 	public static void main(String [] args) throws IOException, InterruptedException{
+		System.out.println("Started main");
 		ProcessBuilder pBuilder = new ProcessBuilder("sleep", "20");
 		Process p = pBuilder.inheritIO().start();
 
