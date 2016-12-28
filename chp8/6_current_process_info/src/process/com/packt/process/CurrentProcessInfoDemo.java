@@ -8,7 +8,7 @@ public class CurrentProcessInfoDemo{
 		throws InterruptedException {
 		ProcessHandle handle = ProcessHandle.current();
 		System.out.println("Started main...");
-		for ( int i = 0 ; i < 1000000; i++){
+		for ( int i = 0 ; i < 100; i++){
 			Thread.sleep(1000);
 		}
 		
