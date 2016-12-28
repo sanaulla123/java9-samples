@@ -8,7 +8,7 @@ public class CurrentProcessInfoDemo{
 		throws InterruptedException {
 		ProcessHandle handle = ProcessHandle.current();
 		
-		Thread.sleep(10000);
+		for ( int i = 0 ; i < 1000000; i++);
 		
 		ProcessHandle.Info info = handle.info();
 
