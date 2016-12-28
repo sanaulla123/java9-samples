@@ -8,9 +8,9 @@ public class SpawnedProcessInfoDemo{
 		ProcessBuilder pBuilder = new ProcessBuilder("sleep", "20");
 		Process p = pBuilder.inheritIO().start();
 
-		ProcessHandle ph = p.toHandle();
+		ProcessHandle handle = p.toHandle();
 
-		ProcessHandle.Info info = ph.info();
+		ProcessHandle.Info info = handle.info();
 
 		int exitValue = p.waitFor();
 
