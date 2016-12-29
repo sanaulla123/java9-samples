@@ -1,6 +1,6 @@
 package com.packt.process;
 
-import java.util.Stream;
+import java.util.stream.Stream;
 
 public class EnumerateProcessDemo{
 	public static void main(String[] args) throws Exception{
