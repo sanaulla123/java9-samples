@@ -10,7 +10,10 @@ public class PipeDemo{
 			new ProcessBuilder("uniq", "-c").redirectOutput(ProcessBuilder.Redirect.INHERIT)
 		);
 		List<Process> processes = ProcessBuilder.startPipeline(pipeline);
-		Process lastProcess = processes.get(processes.size() - 1);
+		processes.stream().forEach( p -> {
+			ProcessHandle.Info pInfo = p.info();
+			System.out.println(pInfo.command().get() + " " + p.isAlive());
+		});
 		//lastProcess.waitFor();
 		/*try(InputStream is = lastProcess.getInputStream();
 			BufferedReader r = new BufferedReader(new InputStreamReader(is))){
