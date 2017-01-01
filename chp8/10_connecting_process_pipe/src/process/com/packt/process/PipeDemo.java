@@ -9,7 +9,6 @@ public class PipeDemo{
 		);
 		List<Process> processes = ProcessBuilder.startPipeline(pipeline);
 		Process lastProcess = processes.get(processes.size() - 1);
-		lastProcess.waitFor();
 		try(InputStream is = lastProcess.getInputStream();
 			BufferedReader r = new BufferedReader(new InputStreamReader(is))){
 			System.out.println(r.readLine());
