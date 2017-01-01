@@ -8,7 +8,7 @@ public class PipeDemo{
 			new ProcessBuilder("cat", "iris.data.txt"),
 			new ProcessBuilder("cut", "-d", ",", "-f", "5"),
 			new ProcessBuilder("uniq", "-c"),
-			new ProcessBuilder("sleep 60").redirectOutput(ProcessBuilder.Redirect.INHERIT)
+			new ProcessBuilder("sleep", "60").redirectOutput(ProcessBuilder.Redirect.INHERIT)
 		);
 		List<Process> processes = ProcessBuilder.startPipeline(pipeline);
 		processes.stream().forEach( p -> {
