@@ -8,12 +8,13 @@ public class PipeDemo{
 			new ProcessBuilder("cat", "iris.data.txt"),
 			new ProcessBuilder("cut", "-d", ",", "-f", "5"),
 			new ProcessBuilder("uniq", "-c"),
-			new ProcessBuilder("sleep", "60").redirectOutput(ProcessBuilder.Redirect.INHERIT)
+			new ProcessBuilder("sleep", "2").redirectOutput(ProcessBuilder.Redirect.INHERIT)
 		);
 		List<Process> processes = ProcessBuilder.startPipeline(pipeline);
 		processes.stream().forEach( p -> {
 			ProcessHandle.Info pInfo = p.info();
-			System.out.println(pInfo.commandLine().orElse("command") + " " + p.isAlive());
+			System.out.println(pInfo.command().orElse("command") + " " + p.isAlive());
+			if ( p.isAlive) { p.waitFor();}
 		});
 		//lastProcess.waitFor();
 		/*try(InputStream is = lastProcess.getInputStream();
