@@ -12,7 +12,7 @@ public class PipeDemo{
 		List<Process> processes = ProcessBuilder.startPipeline(pipeline);
 		processes.stream().forEach( p -> {
 			ProcessHandle.Info pInfo = p.info();
-			System.out.println(pInfo.commandLine().get() + " " + p.isAlive());
+			System.out.println(pInfo.commandLine().orElse("command") + " " + p.isAlive());
 		});
 		//lastProcess.waitFor();
 		/*try(InputStream is = lastProcess.getInputStream();
