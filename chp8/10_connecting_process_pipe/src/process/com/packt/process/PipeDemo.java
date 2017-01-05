@@ -7,7 +7,7 @@ public class PipeDemo{
 		List<ProcessBuilder> pipeline = List.of(
 			new ProcessBuilder("cat", "iris.data.txt"),
 			new ProcessBuilder("cut", "-d", ",", "-f", "5"),
-			new ProcessBuilder("uniq", "-c").redirectOutput(ProcessBuilder.Redirect.INHERIT)
+			new ProcessBuilder("uniq", "-c").redirectOutput(ProcessBuilder.Redirect.PIPE)
 		);
 		
 		List<Process> processes = ProcessBuilder.startPipeline(pipeline);
