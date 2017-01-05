@@ -6,7 +6,7 @@ public class PipeDemo{
 	public static void main(String[] args) throws Exception{
 		List<ProcessBuilder> pipeline = List.of(
 			new ProcessBuilder("cat", "iris.data.txt"),
-			new ProcessBuilder("cut", "-d", ",", "-f", "5").redirectOutput(ProcessBuilder.Redirect.PIPE),
+			new ProcessBuilder("cut", "-d", ",", "-f", "5").redirectOutput(ProcessBuilder.Redirect.INHERIT),
 			new ProcessBuilder("uniq", "-c").redirectOutput(ProcessBuilder.Redirect.INHERIT)
 		);
 		
