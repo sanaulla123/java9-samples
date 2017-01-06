@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class ManageSubProcessDemo{
 	public static void main(String[] args) throws Exception{
-		ExecutorService executor = Executors.newFixedThredPool(10);
+		ExecutorService executor = Executors.newFixedThreadPool(10);
 		Callable<Process> task = () -> {
 			return new ProcessBuilder("/bin/bash", "script.sh")
 				.inheritIO()
