@@ -1,5 +1,5 @@
 echo "Running tree command";
 tree;
-sleep 60;
+sleep 5;
 echo "Running iostat command";
 iostat;
