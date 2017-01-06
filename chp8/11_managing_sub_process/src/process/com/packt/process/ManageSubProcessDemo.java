@@ -29,8 +29,10 @@ public class ManageSubProcessDemo{
 		System.out.println("Obtaining descendants");
 		
 		currentProcess.descendants().forEach(pHandle -> {
-			System.out.println(pHandle);
+			System.out.println(pHandle.info());
 		});
+
+		
 
 	}
 }
