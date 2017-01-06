@@ -9,7 +9,7 @@ public class ManageSubProcessDemo{
 		ExecutorService executor = Executors.newFixedThreadPool(10);
 		Callable<Process> task = () -> {
 			return new ProcessBuilder("/bin/bash", "script.sh")
-				.inheritIO()
+				.redirectOutput(ProcessBuilder.Redirect.DISCARD)
 				.start();
 		};
 
@@ -23,7 +23,7 @@ public class ManageSubProcessDemo{
 		
 		System.out.println("Obtaining children");
 		currentProcess.children().forEach(pHandle -> {
-			System.out.println(pHandle);
+			System.out.println(pHandle.info());
 		});
 
 		System.out.println("Obtaining descendants");
