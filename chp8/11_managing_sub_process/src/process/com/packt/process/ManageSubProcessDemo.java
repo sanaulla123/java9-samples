@@ -6,18 +6,8 @@ import java.util.ArrayList;
 
 public class ManageSubProcessDemo{
 	public static void main(String[] args) throws Exception{
-		ExecutorService executor = Executors.newFixedThreadPool(10);
-		Callable<Process> task = () -> {
-			return new ProcessBuilder("/bin/bash", "script.sh")
-				.redirectOutput(ProcessBuilder.Redirect.DISCARD)
-				.start();
-		};
-
-		List<Future<Process>> tasksResponse = new ArrayList<>();
-
+		
 		for ( int i = 0; i < 10; i++){
-			/*Future<Process> response = executor.submit(task);
-			tasksResponse.add(response);*/
 			new ProcessBuilder("/bin/bash", "script.sh")
 				.redirectOutput(ProcessBuilder.Redirect.DISCARD)
 				.start();
@@ -34,8 +24,6 @@ public class ManageSubProcessDemo{
 		currentProcess.descendants().forEach(pHandle -> {
 			System.out.println(pHandle.info());
 		});
-
-
 
 	}
 }
