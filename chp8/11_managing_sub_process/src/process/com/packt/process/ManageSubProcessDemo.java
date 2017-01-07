@@ -16,8 +16,11 @@ public class ManageSubProcessDemo{
 		List<Future<Process>> tasksResponse = new ArrayList<>();
 
 		for ( int i = 0; i < 10; i++){
-			Future<Process> response = executor.submit(task);
-			tasksResponse.add(response);
+			/*Future<Process> response = executor.submit(task);
+			tasksResponse.add(response);*/
+			new ProcessBuilder("/bin/bash", "script.sh")
+				.redirectOutput(ProcessBuilder.Redirect.DISCARD)
+				.start();
 		}
 		ProcessHandle currentProcess = ProcessHandle.current();
 		
@@ -32,7 +35,7 @@ public class ManageSubProcessDemo{
 			System.out.println(pHandle.info());
 		});
 
-		
+
 
 	}
 }
