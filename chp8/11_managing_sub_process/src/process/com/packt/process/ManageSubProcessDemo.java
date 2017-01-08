@@ -12,6 +12,7 @@ public class ManageSubProcessDemo{
 				.redirectOutput(ProcessBuilder.Redirect.DISCARD)
 				.start();
 		}
+		
 		ProcessHandle currentProcess = ProcessHandle.current();
 		
 		System.out.println("Obtaining children");
