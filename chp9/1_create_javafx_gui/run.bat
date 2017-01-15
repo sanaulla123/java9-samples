@@ -1,0 +1,1 @@
+javac -d mods --module-source-path src src\gui\com\packt\CreateGuiDemo.java src\gui\module-info.java && java -p mods -m gui/com.packt.CreateGuiDemo
