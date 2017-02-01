@@ -1,1 +1,14 @@
-javac -d mods --module-source-path src src\gui\com\packt\CreateGuiDemo.java src\gui\module-info.java && java -p mods -m gui/com.packt.CreateGuiDemo
+@echo off
+javac -d mods --module-source-path src src\gui\com\packt\*.java src\gui\module-info.java
+
+if %errorlevel% == 1 goto failedCompilation
+
+:runCode
+java -p mods -m gui/com.packt.CreateGuiDemo
+goto end
+
+:failedCompilation
+echo 'Compilation failed'
+
+:end
+echo 'Bye!!'
