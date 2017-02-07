@@ -18,14 +18,17 @@ public class PieChartDemo extends Application{
 	
 	@Override
 	public void start(Stage stage) throws IOException {
-		StudentDataProcessor sdp = new StudentDataProcessor();
-		List<Student> students = sdp.loadStudent();
-		System.out.println("students : " + students.size());
+
 		GridPane gridPane = new GridPane();
 		gridPane.setAlignment(Pos.CENTER);
 		gridPane.setHgap(10);
 		gridPane.setVgap(10);
 		gridPane.setPadding(new Insets(25, 25, 25, 25));
+
+
+		StudentDataProcessor sdp = new StudentDataProcessor();
+		List<Student> students = sdp.loadStudent();
+		System.out.println("students : " + students.size());
 
 		PieChart motherOccupationBreakUp = 
 			getStudentCountByOccupation(

@@ -18,14 +18,17 @@ public class BarChartDemo extends Application{
 	
 	@Override
 	public void start(Stage stage) throws IOException {
-		StudentDataProcessor sdp = new StudentDataProcessor();
-		List<Student> students = sdp.loadStudent();
-		System.out.println("students : " + students.size());
+
 		GridPane gridPane = new GridPane();
 		gridPane.setAlignment(Pos.CENTER);
 		gridPane.setHgap(10);
 		gridPane.setVgap(10);
 		gridPane.setPadding(new Insets(25, 25, 25, 25));
+
+		StudentDataProcessor sdp = new StudentDataProcessor();
+		List<Student> students = sdp.loadStudent();
+		System.out.println("students : " + students.size());
+		
 
 		BarChart<String, Number> avgGradeByMotherEdu = 
 			getAvgGradeByEducationBarChart(
@@ -53,28 +56,7 @@ public class BarChartDemo extends Application{
 		List<Student> students,
 		Function<Student, ParentEducation> classifier
 	){
-        Map<ParentEducation, IntSummaryStatistics> g1Average = 
-        	students.stream().collect(
-    			Collectors.groupingBy(
-    				classifier,
-    				Collectors.summarizingInt(Student::getFirstTermGrade)
-    			)
-    		);
-        Map<ParentEducation, IntSummaryStatistics> g2Average = 
-        	students.stream().collect(
-    			Collectors.groupingBy(
-    				classifier,
-    				Collectors.summarizingInt(Student::getSecondTermGrade)
-    			)
-        	);
-       	Map<ParentEducation, IntSummaryStatistics> finalAverage = 
-        	students.stream().collect(
-    			Collectors.groupingBy(
-    				classifier,
-    				Collectors.summarizingInt(Student::getFinalGrade)
-    			)
-    		);
- 		
+    
  		final CategoryAxis xAxis = new CategoryAxis();
         final NumberAxis yAxis = new NumberAxis();
         final BarChart<String,Number> bc = 
@@ -82,25 +64,46 @@ public class BarChartDemo extends Application{
         xAxis.setLabel("Education");
         yAxis.setLabel("Grade");
 
-        XYChart.Series g1Series = new XYChart.Series();
-        g1Series.setName("G1");
-        g1Average.forEach((k, v) -> {
-        	g1Series.getData().add(new XYChart.Data(k.toString(),v.getAverage()));
-        });
-        
-        XYChart.Series g2Series = new XYChart.Series();
-        g2Series.setName("G2");
-        g2Average.forEach((k, v) -> {
-        	g2Series.getData().add(new XYChart.Data(k.toString(),v.getAverage()));
-        });
-        
-        XYChart.Series finalSeries = new XYChart.Series();
-        finalSeries.setName("Final");
-        finalAverage.forEach((k, v) -> {
-        	finalSeries.getData().add(new XYChart.Data(k.toString(),v.getAverage()));
-        });
-        bc.getData().addAll(g1Series, g2Series, finalSeries);
+        bc.getData().add(getSeries(
+        	"G1", 
+        	summarize(students, classifier, Student::getFirstTermGrade)
+        ));
+        bc.getData().add(getSeries(
+        	"G2", 
+        	summarize(students, classifier, Student::getSecondTermGrade)
+        ));
+        bc.getData().add(getSeries(
+        	"Final", 
+        	summarize(students, classifier, Student::getFinalGrade)
+        ));
+     
         return bc;
+	}
+
+	private Map<ParentEducation, IntSummaryStatistics> summarize(
+		List<Student> students,
+		Function<Student, ParentEducation> classifier,
+		ToIntFunction<Student> mapper
+	){
+		Map<ParentEducation, IntSummaryStatistics> statistics = 
+        	students.stream().collect(
+    			Collectors.groupingBy(
+    				classifier,
+    				Collectors.summarizingInt(mapper)
+    			)
+    		);
+    	return statistics;
+	}
+	private XYChart.Series<String,Number> getSeries(
+		String seriesName,
+		Map<ParentEducation, IntSummaryStatistics> statistics
+	){
+		XYChart.Series<String,Number>  series = new XYChart.Series<>();
+        series.setName(seriesName);
+        statistics.forEach((k, v) -> {
+        	series.getData().add(new XYChart.Data<String, Number>(k.toString(),v.getAverage()));
+        });
+        return series;
 	}
 
 
