@@ -13,7 +13,7 @@ import javafx.collections.FXCollections;
 import javafx.scene.chart.*;
 import java.util.stream.*;
 
-public class LineChartDemo extends Application{
+public class BubbleChartDemo extends Application{
 	
 	public static void main(String[] args) {
 		Application.launch(args);
@@ -30,58 +30,63 @@ public class LineChartDemo extends Application{
 
 		final CategoryAxis xAxis = new CategoryAxis();
         final NumberAxis yAxis = new NumberAxis();
-        xAxis.setLabel("Month");
-        yAxis.setLabel("Price");
-        final LineChart<String,Number> lineChart = 
-            new LineChart<>(xAxis,yAxis);
+        xAxis.setLabel("Student");
+        yAxis.setLabel("Marks");
+        final BubbleChart<String,Number> bubbleChart = 
+            new BubbleChart<>(xAxis,yAxis);
 
-        List<OilPrice> crudeOil = getOilData("crude-oil");
+       	List<Marks> marks = getMarks();
 
-		List<OilPrice> brentOil = getOilData("brent-oil");
-
-		lineChart.getData().add(getSeries(
-        	"Crude Oil", crudeOil
+		bubbleChart.getData().add(getSeries(
+          "Unit Tests", marks, Marks::getUnitTests, 0.15
         ));
 
-        lineChart.getData().add(getSeries(
-        	"Brent Oil", brentOil
+        bubbleChart.getData().add(getSeries(
+          "Mid Term", marks, Marks::getMidTerm, 0.25
         ));
-		gridPane.add(lineChart, 1, 1);
+        bubbleChart.getData().add(getSeries(
+          "Final Term", marks, Marks::getFinalTerm, 0.60
+        ));
+
+		gridPane.add(bubbleChart, 1, 1);
 		
 		Scene scene = new Scene(gridPane, 800, 600);
-		stage.setTitle("Line Charts");
+		stage.setTitle("Bubble Charts");
 		stage.setScene(scene);
 		stage.show();
 	}
 
 	private XYChart.Series<String,Number> getSeries(
-		String seriesName, List<OilPrice> data
+		String seriesName
+		List<Marks> data,
+		Function<Marks, Double> extractor,
+		Double contribution
 	) throws IOException{
 		XYChart.Series<String,Number>  series = new XYChart.Series<>();
         series.setName(seriesName);
         data.forEach(d -> {
+        	Double bubbleRadius = 
+        	  (contribution * extractor.apply(d))/10
         	series.getData().add(new XYChart.Data<String, Number>(
-        		d.period, d.value
+        		d.id, extractor.apply(d), bubbleRadius
         	));
         });
         return series;
 	}
 	
-	private List<OilPrice> getOilData(String oilType)
+	private List<Marks> getMarks()
 		throws IOException{
 		Scanner reader = new Scanner(getClass()
 			.getModule()
-			.getResourceAsStream("com/packt/"+oilType)
+			.getResourceAsStream("com/packt/marks")
 		);
 
-		List<OilPrice> data = new LinkedList<>();
+		List<Marks> data = new LinkedList<>();
 		while(reader.hasNext()){
 			String line = reader.nextLine();
-			String[] elements = line.split("\t");
-			OilPrice op = new OilPrice();
-			op.period = elements[0];
-			op.value = Double.parseDouble(elements[1]);
-			data.add(op);	
+			String[] elements = line.split(",");
+			Marks m = new Marks(elements);
+			data.add(m);	
 		}
 		Collections.reverse(data);
 		return data;

@@ -6,7 +6,7 @@ if %errorlevel% == 1 goto failedCompilation
 :runCode
 copy src\gui\com\packt\crude-oil mods\gui\com\packt\
 copy src\gui\com\packt\brent-oil mods\gui\com\packt\
-java -p mods -m gui/com.packt.LineChartDemo
+java -p mods -m gui/com.packt.BubbleChartDemo
 goto end
 
 :failedCompilation

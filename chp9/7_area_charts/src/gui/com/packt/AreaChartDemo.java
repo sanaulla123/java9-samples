@@ -13,8 +13,8 @@ import javafx.collections.FXCollections;
 import javafx.scene.chart.*;
 import java.util.stream.*;
 
-public class LineChartDemo extends Application{
-	
+public class AreaChartDemo extends Application{
+
 	public static void main(String[] args) {
 		Application.launch(args);
 	}
@@ -32,24 +32,24 @@ public class LineChartDemo extends Application{
         final NumberAxis yAxis = new NumberAxis();
         xAxis.setLabel("Month");
         yAxis.setLabel("Price");
-        final LineChart<String,Number> lineChart = 
-            new LineChart<>(xAxis,yAxis);
+        final AreaChart<String,Number> areaChart = 
+            new AreaChart<>(xAxis,yAxis);
 
-        List<OilPrice> crudeOil = getOilData("crude-oil");
+       	List<OilPrice> crudeOil = getOilData("crude-oil");
 
 		List<OilPrice> brentOil = getOilData("brent-oil");
 
-		lineChart.getData().add(getSeries(
+		areaChart.getData().add(getSeries(
         	"Crude Oil", crudeOil
         ));
 
-        lineChart.getData().add(getSeries(
+        areaChart.getData().add(getSeries(
         	"Brent Oil", brentOil
         ));
-		gridPane.add(lineChart, 1, 1);
+		gridPane.add(areaChart, 1, 1);
 		
 		Scene scene = new Scene(gridPane, 800, 600);
-		stage.setTitle("Line Charts");
+		stage.setTitle("Area Charts");
 		stage.setScene(scene);
 		stage.show();
 	}
