@@ -30,7 +30,7 @@ public class BubbleChartDemo extends Application{
 
 		final NumberAxis xAxis = new NumberAxis();
         final NumberAxis yAxis = new NumberAxis();
-        xAxis.setLabel("Student");
+        xAxis.setLabel("Test");
         yAxis.setLabel("Marks");
         final BubbleChart<Number,Number> bubbleChart = 
             new BubbleChart<>(xAxis,yAxis);
@@ -55,22 +55,22 @@ public class BubbleChartDemo extends Application{
 			XYChart.Series<Number,Number>  series = new XYChart.Series<>();
 			series.setName("Student " + m.id);
 			series.getData().add(new XYChart.Data<Number, Number>(
-        		1, m.firstTest, 0.5
+        		5, m.firstTest, ((0.15 * m.firstTest) * 5 ) / 100
         	));
         	series.getData().add(new XYChart.Data<Number, Number>(
-        		2, m.secondTest, 0.5
+        		10, m.secondTest, ((0.15 * m.secondTest) * 5 ) / 100
         	));
         	series.getData().add(new XYChart.Data<Number, Number>(
-        		3, m.thirdTest, 0.5
+        		15, m.thirdTest, ((0.15 * m.thirdTest) * 5 ) / 100
         	));
         	series.getData().add(new XYChart.Data<Number, Number>(
-        		4, m.fourthTest, 0.5
+        		20, m.fourthTest, ((0.15 * m.fourthTest) * 5 ) / 100
         	));
         	series.getData().add(new XYChart.Data<Number, Number>(
-        		5, m.midTerm, 1
+        		25, m.midTerm, ((0.25 * m.midTerm) * 5 ) / 100
         	));
         	series.getData().add(new XYChart.Data<Number, Number>(
-        		6, m.finalTerm, 2
+        		30, m.finalTerm, ((0.60 * m.finalTerm) * 5 ) / 100
         	));
         	bubbleChart.getData().add(series);
 		});
