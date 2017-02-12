@@ -28,25 +28,16 @@ public class BubbleChartDemo extends Application{
 		gridPane.setVgap(10);
 		gridPane.setPadding(new Insets(25, 25, 25, 25));
 
-		final CategoryAxis xAxis = new CategoryAxis();
+		final NumberAxis xAxis = new NumberAxis();
         final NumberAxis yAxis = new NumberAxis();
         xAxis.setLabel("Student");
         yAxis.setLabel("Marks");
-        final BubbleChart<String,Number> bubbleChart = 
+        final BubbleChart<Number,Number> bubbleChart = 
             new BubbleChart<>(xAxis,yAxis);
 
        	List<Marks> marks = getMarks();
 
-		bubbleChart.getData().add(getSeries(
-          "Unit Tests", marks, Marks::getUnitTests, 0.15
-        ));
-
-        bubbleChart.getData().add(getSeries(
-          "Mid Term", marks, Marks::getMidTerm, 0.25
-        ));
-        bubbleChart.getData().add(getSeries(
-          "Final Term", marks, Marks::getFinalTerm, 0.60
-        ));
+       	populateSeries(bubbleChart, marks);
 
 		gridPane.add(bubbleChart, 1, 1);
 		
@@ -56,19 +47,48 @@ public class BubbleChartDemo extends Application{
 		stage.show();
 	}
 
-	private XYChart.Series<String,Number> getSeries(
-		String seriesName
+	private void populateSeries(
+		BubbleChart bubbleChart,
+		List<Marks> marks
+	){
+		marks.forEach(m -> {
+			XYChart.Series<Number,Number>  series = new XYChart.Series<>();
+			series.setName("Student " + m.id);
+			series.getData().add(new XYChart.Data<Number, Number>(
+        		1, m.firstTest, 0.5
+        	));
+        	series.getData().add(new XYChart.Data<Number, Number>(
+        		2, m.secondTest, 0.5
+        	));
+        	series.getData().add(new XYChart.Data<Number, Number>(
+        		3, m.thirdTest, 0.5
+        	));
+        	series.getData().add(new XYChart.Data<Number, Number>(
+        		4, m.fourthTest, 0.5
+        	));
+        	series.getData().add(new XYChart.Data<Number, Number>(
+        		5, m.midTerm, 1
+        	));
+        	series.getData().add(new XYChart.Data<Number, Number>(
+        		6, m.finalTerm, 2
+        	));
+        	bubbleChart.getData().add(series);
+		});
+	}
+
+	private XYChart.Series<Number,Number> getSeries(
+		String seriesName,
 		List<Marks> data,
 		Function<Marks, Double> extractor,
 		Double contribution
 	) throws IOException{
-		XYChart.Series<String,Number>  series = new XYChart.Series<>();
+		XYChart.Series<Number,Number>  series = new XYChart.Series<>();
         series.setName(seriesName);
         data.forEach(d -> {
         	Double bubbleRadius = 
-        	  (contribution * extractor.apply(d))/10
-        	series.getData().add(new XYChart.Data<String, Number>(
-        		d.id, extractor.apply(d), bubbleRadius
+        	  ((contribution * extractor.apply(d)) * 1 ) / 100;
+        	series.getData().add(new XYChart.Data<Number, Number>(
+        		d.id, extractor.apply(d), 1
         	));
         });
         return series;
@@ -82,13 +102,14 @@ public class BubbleChartDemo extends Application{
 		);
 
 		List<Marks> data = new LinkedList<>();
+		int id = 1;
 		while(reader.hasNext()){
 			String line = reader.nextLine();
 			String[] elements = line.split(",");
-			Marks m = new Marks(elements);
+			Marks m = new Marks(id, elements);
 			data.add(m);	
+			id++;
 		}
-		Collections.reverse(data);
 		return data;
 	}
 }

@@ -1,19 +1,22 @@
 package com.packt;
 
 public class Marks{
-	public String id;
-	public Double unitTests;
-	public Double midTerm;
-	public Double finalTerm;
+	public Integer id;
+	public Integer firstTest;
+	public Integer secondTest;
+	public Integer thirdTest;
+	public Integer fourthTest;
+	public Integer midTerm;
+	public Integer finalTerm;
 
-	public Marks(String[] elements){
-		id = elements[0];
-		unitTests = Double.parseDouble(elements[1]);
-		midTerm = Double.parseDouble(elements[2]);
-		finalTerm = Double.parseDouble(elements[3]);
+	public Marks(Integer id, String[] elements){
+		this.id = id;
+		firstTest = Integer.parseInt(elements[0]);
+		secondTest = Integer.parseInt(elements[1]);
+		thirdTest = Integer.parseInt(elements[2]);
+		fourthTest = Integer.parseInt(elements[3]);
+		midTerm = Integer.parseInt(elements[4]);
+		finalTerm = Integer.parseInt(elements[5]);
 	}
 
-	public Double getUnitTests(){ return unitTests; }
-	public Double getMidTerm(){ return midTerm; }
-	public Double getFinalTerm(){ return finalTerm; }
 }
