@@ -30,85 +30,51 @@ public class BubbleChartDemo extends Application{
 
 		final NumberAxis xAxis = new NumberAxis();
         final NumberAxis yAxis = new NumberAxis();
-        xAxis.setLabel("Test");
-        yAxis.setLabel("Marks");
+        xAxis.setLabel("Hour");
+        yAxis.setLabel("Visits");
         final BubbleChart<Number,Number> bubbleChart = 
             new BubbleChart<>(xAxis,yAxis);
 
-       	List<Marks> marks = getMarks();
+       	List<StoreVisit> data = getData();
+       	Integer maxSale = getMaxSale(data);
+		XYChart.Series<Number,Number>  series = new XYChart.Series<>();
+		series.setName("Store Visits");
+		data.forEach(sv -> {
+			series.getData().add(new XYChart.Data<Number, Number>(
+        		sv.hour, sv.visits, (sv.sales/(maxSale  * 1d)) * 2
+        	));
+		});
 
-       	populateSeries(bubbleChart, marks);
-
+		bubbleChart.getData().add(series);
 		gridPane.add(bubbleChart, 1, 1);
 		
-		Scene scene = new Scene(gridPane, 800, 600);
+		Scene scene = new Scene(gridPane, 600, 400);
 		stage.setTitle("Bubble Charts");
 		stage.setScene(scene);
 		stage.show();
 	}
 
-	private void populateSeries(
-		BubbleChart bubbleChart,
-		List<Marks> marks
-	){
-		marks.forEach(m -> {
-			XYChart.Series<Number,Number>  series = new XYChart.Series<>();
-			series.setName("Student " + m.id);
-			series.getData().add(new XYChart.Data<Number, Number>(
-        		5, m.firstTest, ((0.15 * m.firstTest) * 5 ) / 100
-        	));
-        	series.getData().add(new XYChart.Data<Number, Number>(
-        		10, m.secondTest, ((0.15 * m.secondTest) * 5 ) / 100
-        	));
-        	series.getData().add(new XYChart.Data<Number, Number>(
-        		15, m.thirdTest, ((0.15 * m.thirdTest) * 5 ) / 100
-        	));
-        	series.getData().add(new XYChart.Data<Number, Number>(
-        		20, m.fourthTest, ((0.15 * m.fourthTest) * 5 ) / 100
-        	));
-        	series.getData().add(new XYChart.Data<Number, Number>(
-        		25, m.midTerm, ((0.25 * m.midTerm) * 5 ) / 100
-        	));
-        	series.getData().add(new XYChart.Data<Number, Number>(
-        		30, m.finalTerm, ((0.60 * m.finalTerm) * 5 ) / 100
-        	));
-        	bubbleChart.getData().add(series);
-		});
+	private Integer getMaxSale(List<StoreVisit> data){
+		return data.stream()
+			.mapToInt(StoreVisit::getSales)
+			.max()
+			.getAsInt();
 	}
 
-	private XYChart.Series<Number,Number> getSeries(
-		String seriesName,
-		List<Marks> data,
-		Function<Marks, Double> extractor,
-		Double contribution
-	) throws IOException{
-		XYChart.Series<Number,Number>  series = new XYChart.Series<>();
-        series.setName(seriesName);
-        data.forEach(d -> {
-        	Double bubbleRadius = 
-        	  ((contribution * extractor.apply(d)) * 1 ) / 100;
-        	series.getData().add(new XYChart.Data<Number, Number>(
-        		d.id, extractor.apply(d), 1
-        	));
-        });
-        return series;
-	}
-	
-	private List<Marks> getMarks()
+	private List<StoreVisit> getData()
 		throws IOException{
 		Scanner reader = new Scanner(getClass()
 			.getModule()
-			.getResourceAsStream("com/packt/marks")
+			.getResourceAsStream("com/packt/store")
 		);
 
-		List<Marks> data = new LinkedList<>();
+		List<StoreVisit> data = new LinkedList<>();
 		int id = 1;
 		while(reader.hasNext()){
 			String line = reader.nextLine();
 			String[] elements = line.split(",");
-			Marks m = new Marks(id, elements);
-			data.add(m);	
-			id++;
+			StoreVisit sv = new StoreVisit(elements);
+			data.add(sv);
 		}
 		return data;
 	}
