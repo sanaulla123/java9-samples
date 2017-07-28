@@ -4,8 +4,8 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.packt</groupId>
-	<artifactId>boot_rest_demo</artifactId>
-	<version>0.1</version>
+	<artifactId>boot_docker</artifactId>
+	<version>1.0</version>
 	<packaging>jar</packaging>
 
 	<name>boot_rest_demo</name>

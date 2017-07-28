@@ -4,13 +4,12 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.packt</groupId>
-	<artifactId>boot_rest_demo</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<artifactId>restapp</artifactId>
+	<version>0.1</version>
 	<packaging>jar</packaging>
 
 	<name>boot_rest_demo</name>
 	<description>Demo project for Spring Boot</description>
-
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
@@ -34,6 +33,11 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
+
 
 		<dependency>
 			<groupId>mysql</groupId>
@@ -52,6 +56,10 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>com.packt.restapp.BootMultiProfileDemo</mainClass>
+
+                </configuration>
 			</plugin>
 		</plugins>
 	</build>
