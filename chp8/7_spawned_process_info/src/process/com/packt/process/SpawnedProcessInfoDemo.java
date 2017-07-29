@@ -23,6 +23,6 @@ public class SpawnedProcessInfoDemo{
 		System.out.println("Start: " + info.startInstant().get());
 		System.out.println("Total CPU time(ms): " + info.totalCpuDuration().get().toMillis());
 
-		System.out.println("PID: " + handle.getPid());
+		System.out.println("PID: " + handle.pid());
 	}
 }
