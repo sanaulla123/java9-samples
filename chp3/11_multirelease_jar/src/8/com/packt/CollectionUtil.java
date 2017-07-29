@@ -7,8 +7,6 @@ import java.util.List;
 import java.util.Arrays;
 
 public class CollectionUtil{
-	
-
 	public static List<String> list(String ... args){
 		System.out.println("Using Arrays.asList");
 		return Arrays.asList(args);

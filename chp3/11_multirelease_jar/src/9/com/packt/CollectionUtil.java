@@ -5,7 +5,6 @@ import java.util.Set;
 import java.util.List;
 
 public class CollectionUtil{
-	
 
 	public static List<String> list(String ... args){
 		System.out.println("Using factory methods");
