@@ -22,7 +22,7 @@ public class CurrentProcessInfoDemo{
 		System.out.println("Start: " + info.startInstant().get());
 		System.out.println("Total CPU Duration: " + info.totalCpuDuration().get().toMillis() +"ms");
 
-		System.out.println("PID: " + handle.getPid());
+		System.out.println("PID: " + handle.pid());
 
 		Instant end = Instant.now();
 		System.out.println("End: " + end);
