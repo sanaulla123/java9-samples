@@ -1,17 +1,23 @@
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse; 
+import jdk.incubator.http.*;
 import java.net.URI;
 
 public class Http2Feature{
   public static void main(String[] args) throws Exception{ 
-    HttpResponse response = HttpRequest
-      .create(new URI("http://jsonplaceholder.typicode.com/users"))
-      .GET()
-      .response();
+    HttpClient client = HttpClient
+      .newBuilder()
+      .build();
 
-    String responseBody = response.body(HttpResponse.asString());
-    System.out.println("Status coe: " + response.statusCode());
-    System.out.println("Response Body: " + responseBody);          
+    HttpRequest request = HttpRequest
+      .newBuilder(new URI("http://httpbin.org/get"))
+      .GET()
+      .version(HttpClient.Version.HTTP_1_1)
+      .build();
+
+    HttpResponse<String> response = client.send(request, 
+      HttpResponse.BodyHandler.asString());
+
+    System.out.println("Status code: " + response.statusCode());
+    System.out.println("Response Body: " + response.body());          
   }
 }
 

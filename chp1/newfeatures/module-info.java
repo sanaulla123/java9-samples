@@ -1,3 +1,3 @@
 module newfeatures{
-  requires java.httpclient;
+  requires jdk.incubator.httpclient;
 }
