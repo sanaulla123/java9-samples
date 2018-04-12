@@ -1,6 +1,11 @@
-**/classes
 **/mods
 **/output
 **/mlib
 **/target
 **/out
+**/classes
+.project
+.settings
+.vscode
+.classpath
+.sts4-cache
