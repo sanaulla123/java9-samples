@@ -11,7 +11,7 @@ public class ChangeWorkDirectoryDemo{
 		pb.command("tree")
 		  .inheritIO();
 
-		pb.directory(new File("/root/java9-samples/chp8"));
+		pb.directory(new File("/root"));
 
 		Process p = pb.start();
 

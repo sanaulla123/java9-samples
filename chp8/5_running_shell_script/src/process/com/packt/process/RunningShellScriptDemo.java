@@ -10,7 +10,7 @@ public class RunningShellScriptDemo{
 
 		ProcessBuilder pb = new ProcessBuilder();
 		
-		pb.directory(new File("/root/java9-samples/chp8/5_running_shell_script"));
+		pb.directory(new File("/root"));
 
 		Map<String, String> environment = pb.environment();
 		environment.put("MY_VARIABLE", "From your parent Java process");
