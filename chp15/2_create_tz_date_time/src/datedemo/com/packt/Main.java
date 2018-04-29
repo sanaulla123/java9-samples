@@ -6,6 +6,22 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.Month;
+import java.time.ZoneOffset;
+import java.time.ZonedDateTime;
+import java.time.ZonedDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.OffsetTime;
+import java.time.ZoneOffset;
+import java.time.ZoneId;
+import java.time.ZoneOffset;
+import java.time.ZoneOffset;
+import java.time.ZoneId;
+import java.time.ZoneOffset;
+import java.time.ZonedDateTime;
+import java.time.zone.ZoneRules;
+import java.time.ZonedDateTime;
+import java.time.zone.ZoneRules;
 import java.time.temporal.ChronoField;
 import java.time.temporal.ChronoUnit;
 import java.time.temporal.TemporalAccessor;
@@ -14,47 +30,22 @@ import java.util.Objects;
 
 public class Main{
     public static void main(String[] args) {
+        var dateTime = ZonedDateTime.now();
+        System.out.println("Date Time using now(): " + dateTime);
 
-        LocalDate date = LocalDate.now();
-        System.out.println("Current Date is: " + date);
+        var indianTz = ZoneId.of("Asia/Kolkata");
+        var istDateTime = ZonedDateTime.now(indianTz);
+        System.out.println("Date Time using ZoneId: " + istDateTime);
 
-        LocalDate date1 = LocalDate.of(2018, 4, 12);
-        LocalDate date2 = LocalDate.of(2018, Month.APRIL, 12);
-        compare(date1, date2);
+        var indianTzOffset = ZoneOffset.ofHoursMinutes(5, 30);
+        istDateTime = ZonedDateTime.now(indianTzOffset);
+        System.out.println("Date Time using ZoneOffset: " + istDateTime);
         
-        date2 = LocalDate.ofYearDay(2018, 102);
-        compare(date1, date2);
+        ZonedDateTime dateTimeOf = ZonedDateTime.of(2018, 4, 22, 14, 30, 11, 33, indianTz);
+        System.out.println("Date Time using of(): " + dateTimeOf);
 
-        date2 = LocalDate.parse("2018-04-12");
-        compare(date1, date2);
-
-        LocalTime time = LocalTime.now();
-        System.out.println("Current time is: " + time);
-
-        time = LocalTime.of(23, 11, 11, 11);
-        System.out.println("Time after 3600 seconds in the day: " + LocalTime.ofSecondOfDay(3600));
-
-        LocalDateTime dateTime = LocalDateTime.now();
-        System.out.println("Current Date time is: " + dateTime); 
-
-        LocalDateTime dateTime1 = LocalDateTime.of(2018, 04, 12, 13, 30, 22);
-        LocalDateTime dateTime2 = LocalDateTime.of(2018, Month.APRIL, 12, 13, 30, 22);
-        compare(dateTime1, dateTime2);
-        
-        dateTime2 = LocalDateTime.of(date2, LocalTime.of(13, 30, 22));
-        compare(dateTime1, dateTime2);
+        var localDateTime = dateTimeOf.toLocalDateTime();
+        System.out.println("LocalDateTime from ZonedDateTime: " + localDateTime);
     }
 
-    private static void compare(LocalDate date1, LocalDate date2){
-        if ( !date1.equals(date2) ) {
-            throw new AssertionError(String.format("Date 1 %s is not equal to Date 2 %s", date1, date2));
-        }
-    }
-
-    private static void compare(LocalDateTime time1, LocalDateTime time2){
-        if ( !time1.equals(time2) ) {
-            throw new AssertionError(String.format("DateTime 1 %s is not equal to DateTime 2 %s", 
-                time1, time2));
-        }
-    }
 }

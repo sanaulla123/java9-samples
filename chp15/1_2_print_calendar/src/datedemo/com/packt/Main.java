@@ -34,14 +34,13 @@ public class Main{
             //because end date is excluded so we add 1 to it.
             var endDate = startDate.plusDays(startDate.lengthOfMonth());
             //var calendar = new HashMap<ChronoField.DAY_OF_WEEK, List<Integer>>();
-            var calendar = startDate.datesUntil(endDate).collect(
+            var dayBuckets = startDate.datesUntil(endDate).collect(
+                
                 Collectors.groupingBy(date -> date.getDayOfWeek(), 
-                    LocalDate::getDayOfMonth,
-                    Collectors.toList()));
-            // Arrays.stream(ChronoField.DAY_OF_WEEK).forEach(day -> {
-            //     System.out.println(calendar.get(day));
-            // });
-            System.out.println(calendar);
+                    Collectors.mapping(LocalDate::getDayOfMonth, 
+                        Collectors.toList())
+                ));
+            System.out.println(dayBuckets);
         }
     }
 
