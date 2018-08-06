@@ -7,7 +7,8 @@ mkdir classes
 if %errorlevel% == 1 goto failedCompilation
 
 :runCode
-"%JAVA8_HOME%"\bin\java -cp lib\*;classes com.packt.Sample
+jar cvfm sample.jar manifest.mf -C classes .
+"%JAVA8_HOME%"\bin\java -jar sample.jar
 goto end
 
 :failedCompilation

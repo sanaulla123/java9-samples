@@ -14,10 +14,7 @@ public class Sample{
 			ObjectMapper mapper = new ObjectMapper();
 			List<User> users = mapper.readValue(new URL("http://jsonplaceholder.typicode.com/users"), 
 				new TypeReference<List<User>>(){});
-
-			for ( User user: users){
-				System.out.println("Name: " + user.name + ", Company: " + user.company.name);
-			}
+			users.stream().forEach(System.out::println);
 		}catch(Exception ex){
 			ex.printStackTrace();
 		}

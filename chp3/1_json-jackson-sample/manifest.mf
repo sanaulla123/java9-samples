@@ -1,2 +1,2 @@
 Main-Class: com.packt.Sample
-Class-Path: lib/jackson-annotations-2.8.4.jar lib/jackson-core-2.8.4.jar lib/jackson-databind-2.8.4.jar
+Class-Path: lib/jackson-annotations-2.9.6.jar lib/jackson-core-2.9.6.jar lib/jackson-databind-2.9.6.jar

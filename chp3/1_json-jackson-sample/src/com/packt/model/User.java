@@ -9,4 +9,9 @@ public class User{
 	public String phone;
 	public String website;
 	public Company company;
+
+	@Override
+	public String toString(){
+		return "Name: " + this.name + ", Company: " + this.company.name;
+	}
 }
