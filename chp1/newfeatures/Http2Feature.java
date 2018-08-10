@@ -1,4 +1,4 @@
-import jdk.incubator.http.*;
+import java.net.http.*;
 import java.net.URI;
 
 public class Http2Feature{
@@ -14,7 +14,7 @@ public class Http2Feature{
       .build();
 
     HttpResponse<String> response = client.send(request, 
-      HttpResponse.BodyHandler.asString());
+      HttpResponse.BodyHandlers.ofString());
 
     System.out.println("Status code: " + response.statusCode());
     System.out.println("Response Body: " + response.body());          

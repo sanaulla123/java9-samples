@@ -1,6 +1,6 @@
 package com.packt;
 
-import jdk.incubator.http.*;
+import java.net.http.*;
 import java.net.URI;
 import java.util.concurrent.CompletableFuture;
 public class AsyncHttpRequestDemo{
@@ -16,7 +16,7 @@ public class AsyncHttpRequestDemo{
             .build();
 
         CompletableFuture<HttpResponse<String>> responseFuture = 
-            client.sendAsync(request, HttpResponse.BodyHandler.asString());
+            client.sendAsync(request, HttpResponse.BodyHandlers.ofString());
         
         CompletableFuture<Void> processedFuture = 
             responseFuture.thenAccept(response -> {

@@ -1,6 +1,6 @@
 package com.packt;
 
-import jdk.incubator.http.*;
+import java.net.http.*;
 import java.net.URI;
 
 public class HttpGetDemo{
@@ -16,7 +16,7 @@ public class HttpGetDemo{
             .build();
 
         HttpResponse<String> response = client.send(request,
-            HttpResponse.BodyHandler.asString());
+            HttpResponse.BodyHandlers.ofString());
 
         System.out.println("Status code: " + response.statusCode());
         System.out.println("Response Body: " + response.body());

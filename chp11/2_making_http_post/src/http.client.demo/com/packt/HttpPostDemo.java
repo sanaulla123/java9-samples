@@ -1,6 +1,6 @@
 package com.packt;
 
-import jdk.incubator.http.*;
+import java.net.http.*;
 import java.net.URI;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.Map;
@@ -16,12 +16,12 @@ public class HttpPostDemo{
         ObjectMapper mapper = new ObjectMapper();
         HttpRequest request = HttpRequest
             .newBuilder(new URI("http://httpbin.org/post"))
-            .POST(HttpRequest.BodyProcessor.fromString(mapper.writeValueAsString(requestBody)))
+            .POST(HttpRequest.BodyPublishers.ofString(mapper.writeValueAsString(requestBody)))
             .version(HttpClient.Version.HTTP_1_1)
             .build();
 
         HttpResponse<String> response = client.send(request,
-            HttpResponse.BodyHandler.asString());
+            HttpResponse.BodyHandlers.ofString());
 
         System.out.println("Status code: " + response.statusCode());
         System.out.println("Response Body: " + response.body());

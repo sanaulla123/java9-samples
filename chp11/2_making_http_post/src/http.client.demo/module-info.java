@@ -1,5 +1,5 @@
 module http.client.demo{
-    requires jdk.incubator.httpclient;
+    requires java.net.http;
     requires jackson.databind;
     requires jackson.core;
     requires jackson.annotations;
