@@ -1,0 +1,32 @@
+import java.time.*;
+Period.of(2,4,30
+);
+Period.ofDays(10)
+Period.ofMonths(4)
+Period.ofWeeks(3)
+Period.ofYears(3)
+Period.parse("P2Y4M23D").getDays()
+Period.between(LocalDate.now(), LocalDate.of(2018, 8, 23))
+Period.between(LocalDate.now(), LocalDate.of(2018, 2, 23))
+Period period2 = period1.withDays(15);
+period1 == period2
+Period period3 = period1.withDays(14);
+period1 == period3
+LocalDate.now().until(LocalDate.of(2018, 2, 23))
+LocalDate.now().until(LocalDate.of(2018, 8, 23))
+LocalDate date = LocalDate.now();
+period1.addTo(date)
+date.plus(period1)
+period1.minus(Period.of(1,3,4))
+period1.minusDays(4)
+period1.minusMonths(3)
+period1.minusYears(1)
+period1.plus(Period.of(1, 3, 4))
+period1.plusDays(4)
+period1.plusMonths(3)
+period1.plusYears(1)
+Period period1 = Period.of(3, 15, 29);
+period1.negated()
+period1
+period1.normalized()
+period1
