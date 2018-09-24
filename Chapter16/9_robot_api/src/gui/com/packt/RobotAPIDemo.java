@@ -3,9 +3,16 @@ package com.packt;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.scene.Scene;
-import javafx.scene.layout.*;
+import javafx.scene.robot.Robot;
+import java.time.format.DateTimeFormatter;
+
+import java.awt.image.BufferedImage;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.TimeUnit;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+import javafx.scene.layout.*;
+
 import javafx.geometry.*;
 import javafx.scene.shape.*;
 import javafx.scene.effect.*;
@@ -20,13 +27,9 @@ import javax.imageio.stream.*;
 import java.util.Iterator;
 import javax.imageio.plugins.tiff.*;
 import javax.imageio.metadata.*;
-import javafx.scene.robot.*;
-import java.time.*;
-import java.time.format.DateTimeFormatter;
 import javafx.scene.input.*;
-import java.awt.image.BufferedImage;
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.TimeUnit;
+import java.time.*;
+
 
 
 public class RobotAPIDemo{
